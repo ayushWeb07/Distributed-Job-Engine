@@ -14,13 +14,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup node
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup node and use pnpm
         uses: actions/setup-node@v6.0.0
         with:
           node-version: 24
-          cache: "npm"
+          cache: "pnpm"
 
-      - run: npm ci --legacy-peer-deps
+      - run: pnpm install --frozen-lockfile
 
       - uses: nrwl/nx-set-shas@v4
 
