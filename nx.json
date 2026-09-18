@@ -34,6 +34,5 @@
       "exclude": ["apps/auth-e2e/**/*"]
     }
   ],
-  "nxCloudId": "6aacdc6d159f98e61a719bfb",
   "packageManager": "pnpm"
 }
