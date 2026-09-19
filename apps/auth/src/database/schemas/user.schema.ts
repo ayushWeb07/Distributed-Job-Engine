@@ -4,7 +4,7 @@ import {
   timestamp,
   boolean,
   uuid,
-  char
+  char,
 } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {

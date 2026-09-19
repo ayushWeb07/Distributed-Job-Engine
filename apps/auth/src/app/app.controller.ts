@@ -7,6 +7,12 @@ export class AppController {
 
   @Get()
   getData() {
-    return this.appService.getData();
+    const data = this.appService.getData();
+
+    return {
+      success: true,
+      message: 'Successfully fetched all the users',
+      data,
+    };
   }
 }
