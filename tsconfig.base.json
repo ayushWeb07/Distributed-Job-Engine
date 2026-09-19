@@ -13,7 +13,10 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "strict": false
+    "strict": false,
+    "paths": {
+      "@distributed-job-engine/graphql": ["./libs/graphql/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
