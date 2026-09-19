@@ -52,6 +52,24 @@
       "options": {
         "passWithNoTests": true
       }
+    },
+    "drizzle:generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit generate --config=apps/auth/drizzle.config.ts"
+      }
+    },
+    "drizzle:migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit migrate --config=apps/auth/drizzle.config.ts"
+      }
+    },
+    "drizzle:studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit studio --config=apps/auth/drizzle.config.ts"
+      }
     }
   }
 }

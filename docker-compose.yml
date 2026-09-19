@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres
+    container_name: distributed-job-engine-postgres
+    restart: unless-stopped
+    ports:
+      - '5437:5432'
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root123
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:
