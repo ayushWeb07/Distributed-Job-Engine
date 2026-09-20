@@ -9,7 +9,7 @@ export class UsersResolver {
 
   @Query(() => [UserModel])
   async findAllUsers(): Promise<UserModel[]> {
-    return await this.usersService.findAll();
+    return await this.usersService.findAllUsers();
   }
 
   @Mutation(() => UserModel)
