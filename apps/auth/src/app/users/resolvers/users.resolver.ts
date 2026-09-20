@@ -13,5 +13,9 @@ export class UsersResolver {
   }
 
   @Mutation(() => UserModel)
-  async createUser(@Args('createUserInput') createUserInput: CreateUserInput) {}
+  async createUser(
+    @Args('createUserInput') createUserInput: CreateUserInput,
+  ): Promise<UserModel> {
+    return await this.usersService.createUser(createUserInput);
+  }
 }

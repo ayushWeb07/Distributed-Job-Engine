@@ -16,9 +16,18 @@ export class UsersRepository {
     private readonly db: NodePgDatabase<typeof schema>,
   ) {}
 
-  async createUser(insertUserType: InsertUserType): Promise<void> {
+  async createUser(
+    insertUserType: InsertUserType,
+  ): Promise<SelectUserType | null> {
     // insert into the db
-    await this.db.insert(users).values(insertUserType);
+    const [createdUser] = await this.db
+      .insert(users)
+      .values(insertUserType)
+      .returning();
+
+    if (!createdUser) return null;
+
+    return createdUser;
   }
 
   async findAllUsers(): Promise<SelectUserType[]> {
