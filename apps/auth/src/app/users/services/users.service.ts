@@ -13,7 +13,7 @@ export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async createUser(createUserInput: CreateUserInput): Promise<SelectUserType> {
-    // check if a customer with this email already exists
+    // check if a user with this email already exists
     const existingUser: SelectUserType | null =
       await this.usersRepository.findUserByEmail(createUserInput.email);
 
