@@ -37,7 +37,7 @@
       "dependsOn": ["build"],
       "options": {
         "buildTarget": "auth:build",
-        "runBuildTargetDependencies": false
+        "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {
