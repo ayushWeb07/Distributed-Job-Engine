@@ -7,6 +7,7 @@ import { SelectUserType } from '../../../database/types/user.type';
 import { UsersRepository } from '../repositories/users.repository';
 import { CreateUserInput } from '../inputs/create-user.input';
 import bcrypt from 'bcrypt';
+import { FindUserByIdArg } from '../../auth/args/find-user-by-id.arg';
 
 @Injectable()
 export class UsersService {
@@ -47,5 +48,19 @@ export class UsersService {
     const existingUsers: SelectUserType[] =
       await this.usersRepository.findAllUsers();
     return existingUsers;
+  }
+
+  async findUserById(
+    findUserByIdArg: FindUserByIdArg,
+  ): Promise<SelectUserType> {
+    // check if a user with this email already exists
+    const existingUser: SelectUserType | null =
+      await this.usersRepository.findUserById(findUserByIdArg.id);
+
+    if (!existingUser) {
+      throw new ConflictException(`User with such id does not exist`);
+    }
+
+    return existingUser;
   }
 }
