@@ -1,6 +1,5 @@
 import {
   ConflictException,
-  Inject,
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
@@ -49,7 +48,4 @@ export class UsersService {
       await this.usersRepository.findAllUsers();
     return existingUsers;
   }
-
-  async findUserById() {}
-  async deleteUserById() {}
 }
