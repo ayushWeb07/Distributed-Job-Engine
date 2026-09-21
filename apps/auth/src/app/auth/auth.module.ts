@@ -6,10 +6,13 @@ import { ConfigService } from '@nestjs/config';
 import { IServerConfig } from '../../config/interfaces/server_config.interface';
 import { UsersModule } from '../users/users.module';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { PassportModule } from '@nestjs/passport';
+import { GqlJwtAuthGuard } from './guards/gql-jwt-auth.guard';
 
 @Module({
   imports: [
     UsersModule,
+    PassportModule.register({defaultStrategy: 'jwt'}),
 
     JwtModule.registerAsync({
       inject: [ConfigService],
@@ -30,6 +33,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       },
     }),
   ],
-  providers: [AuthService, AuthResolver, JwtStrategy],
+  providers: [AuthService, AuthResolver, JwtStrategy, GqlJwtAuthGuard],
+  exports: [GqlJwtAuthGuard]
 })
 export class AuthModule {}
