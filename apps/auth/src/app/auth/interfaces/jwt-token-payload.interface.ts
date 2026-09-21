@@ -1,4 +1,4 @@
-export interface IJwtTokenPayloadInterface {
+export interface IJwtTokenPayload {
   userId: string;
   userEmail: string;
 }

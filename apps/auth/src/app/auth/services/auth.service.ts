@@ -5,7 +5,7 @@ import { LoginUserInput } from '../inputs/login-user.input';
 import { SelectUserType } from '../../../database/types/user.type';
 import bcrypt from 'bcrypt';
 import { ILoginServiceResponseInterface } from '../interfaces/login-service-response.interface';
-import { IJwtTokenPayloadInterface } from '../interfaces/jwt-token-payload.interface';
+import { IJwtTokenPayload } from '../interfaces/jwt-token-payload.interface';
 
 @Injectable()
 export class AuthService {
@@ -36,7 +36,7 @@ export class AuthService {
     }
 
     // generate the jwt token
-    const payload: IJwtTokenPayloadInterface = {
+    const payload: IJwtTokenPayload = {
       userId: existingUser.id,
       userEmail: existingUser.email,
     };
