@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { LoginUserInput } from '../inputs/login-user.input';
 import { SelectUserType } from '../../../database/types/user.type';
 import bcrypt from 'bcrypt';
-import { ILoginServiceResponseInterface } from '../interfaces/login-service-response.interface';
+import { ILoginServiceResponse } from '../interfaces/login-service-response.interface';
 import { IJwtTokenPayload } from '../interfaces/jwt-token-payload.interface';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class AuthService {
 
   async loginUser(
     loginUserInput: LoginUserInput,
-  ): Promise<ILoginServiceResponseInterface> {
+  ): Promise<ILoginServiceResponse> {
     // check if a user with this email even exists
     const existingUser: SelectUserType | null =
       await this.usersRepository.findUserByEmail(loginUserInput.email);

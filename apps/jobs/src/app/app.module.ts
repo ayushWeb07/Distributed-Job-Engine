@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import envsValidationSchema from '../../../auth/src/config/validations/envs.validation';
-import serverConfig from '../../../auth/src/config/server.config';
-import databaseConfig from '../../../auth/src/config/database.config';
+import envsValidationSchema from '../config/validations/envs.validation';
+import serverConfig from '../config/server.config';
+import databaseConfig from '../config/database.config';
 
 @Module({
   imports: [

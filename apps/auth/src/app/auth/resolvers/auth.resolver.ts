@@ -5,7 +5,7 @@ import { LoginUserInput } from '../inputs/login-user.input';
 import type { Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { IServerConfig } from '../../../config/interfaces/server_config.interface';
-import { ILoginServiceResponseInterface } from '../interfaces/login-service-response.interface';
+import { ILoginServiceResponse } from '../interfaces/login-service-response.interface';
 import { UseGuards } from '@nestjs/common';
 import { GqlJwtAuthGuard } from '../guards/gql-jwt-auth.guard';
 import { CurrentUser } from '../decorators/current-user.decorator';
@@ -37,7 +37,7 @@ export class AuthResolver {
     @Context() context: { res: Response },
   ): Promise<UserModel> {
     // call the login auth service
-    const { user, token }: ILoginServiceResponseInterface =
+    const { user, token }: ILoginServiceResponse =
       await this.authService.loginUser(loginUserInput);
 
     // set the token in the cookie
