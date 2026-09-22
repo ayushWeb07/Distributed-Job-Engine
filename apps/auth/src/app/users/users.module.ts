@@ -7,5 +7,6 @@ import { DrizzleModule } from '../../database/drizzle.module';
 @Module({
   imports: [DrizzleModule],
   providers: [UsersRepository, UsersService, UsersResolver],
+  exports: [UsersRepository, UsersService],
 })
 export class UsersModule {}

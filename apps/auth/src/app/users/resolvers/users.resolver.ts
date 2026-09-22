@@ -9,6 +9,7 @@ export class UsersResolver {
 
   @Query(() => [UserModel])
   async findAllUsers(): Promise<UserModel[]> {
+    // call the find all users service
     return await this.usersService.findAllUsers();
   }
 
@@ -16,6 +17,7 @@ export class UsersResolver {
   async createUser(
     @Args('createUserInput') createUserInput: CreateUserInput,
   ): Promise<UserModel> {
+    // call the create user service
     return await this.usersService.createUser(createUserInput);
   }
 }

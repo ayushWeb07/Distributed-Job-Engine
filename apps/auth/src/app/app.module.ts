@@ -9,6 +9,8 @@ import { DrizzleModule } from '../database/drizzle.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UsersModule } from './users/users.module';
+import type { Request, Response } from 'express';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -24,9 +26,14 @@ import { UsersModule } from './users/users.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
+      context: ({ req, res }: { req: Request; res: Response }) => ({
+        req,
+        res,
+      }),
     }),
 
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

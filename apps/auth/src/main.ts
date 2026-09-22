@@ -8,6 +8,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 import { ConfigService } from '@nestjs/config';
 import { IServerConfig } from './config/interfaces/server_config.interface';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -22,6 +23,9 @@ async function bootstrap() {
       transform: true,
     }),
   );
+
+  // use the cookie parser
+  app.use(cookieParser());
 
   // load the config service and the port
   const configService = app.get(ConfigService);
